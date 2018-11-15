@@ -1,7 +1,9 @@
 package com.ecommerce.microcommerce.web.controller;
 
 import com.ecommerce.microcommerce.dao.ProductDao;
+import com.ecommerce.microcommerce.dto.ProductMargeDto;
 import com.ecommerce.microcommerce.model.Product;
+import com.ecommerce.microcommerce.service.ProductService;
 import com.ecommerce.microcommerce.web.exceptions.ProduitIntrouvableException;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
@@ -26,6 +28,9 @@ public class ProductController {
 
     @Autowired
     private ProductDao productDao;
+    
+    @Autowired
+    private ProductService productService;
 
 
     //Récupérer la liste des produits
@@ -68,8 +73,9 @@ public class ProductController {
     @PostMapping(value = "/Produits")
 
     public ResponseEntity<Void> ajouterProduit(@Valid @RequestBody Product product) {
+        Product productAdded =   productDao.save(product);
 
-        Product productAdded =  productDao.save(product);
+//        Product productAdded =   productService.saveProduct(product);
 
         if (productAdded == null)
             return ResponseEntity.noContent().build();
@@ -91,8 +97,9 @@ public class ProductController {
 
     @PutMapping (value = "/Produits")
     public void updateProduit(@RequestBody Product product) {
+        Product productAdded =   productDao.save(product);
 
-        productDao.save(product);
+       // productService.saveProduct(product);
     }
 
 
@@ -101,6 +108,15 @@ public class ProductController {
     public List<Product>  testeDeRequetes(@PathVariable int prix) {
 
         return productDao.chercherUnProduitCher(400);
+    }
+    @GetMapping(value ="/produits/trierProduitsParOrdreAlphabetique")
+    public List<Product> trierProduitsParOrdreAlphabetique(){
+    	return productDao.SortProductsByName();
+    }
+    
+    @GetMapping(value ="AdminProduits")
+    public List<ProductMargeDto> calculerMargeProduit(){
+    	return productService.calculerMargeProduit();
     }
 
 
