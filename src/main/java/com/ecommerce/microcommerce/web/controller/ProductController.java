@@ -73,10 +73,7 @@ public class ProductController {
     @PostMapping(value = "/Produits")
 
     public ResponseEntity<Void> ajouterProduit(@Valid @RequestBody Product product) {
-        Product productAdded =   productDao.save(product);
-
-//        Product productAdded =   productService.saveProduct(product);
-
+        Product productAdded =   productService.saveProduct(product);
         if (productAdded == null)
             return ResponseEntity.noContent().build();
 
@@ -97,9 +94,8 @@ public class ProductController {
 
     @PutMapping (value = "/Produits")
     public void updateProduit(@RequestBody Product product) {
-        Product productAdded =   productDao.save(product);
 
-       // productService.saveProduct(product);
+        productService.saveProduct(product);
     }
 
 

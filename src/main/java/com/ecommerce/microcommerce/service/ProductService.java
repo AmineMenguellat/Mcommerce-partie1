@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.ecommerce.microcommerce.dao.ProductDao;
 import com.ecommerce.microcommerce.dto.ProductMargeDto;
 import com.ecommerce.microcommerce.model.Product;
+import com.ecommerce.microcommerce.web.exceptions.ProduitGratuitException;
 
 @Service
 public class ProductService {
@@ -25,4 +26,8 @@ public class ProductService {
 		return productsMarge;
 	}
 	
+	public Product saveProduct(Product product) {
+		if(product.getPrix() == 0) throw new ProduitGratuitException("le prix de vente Zero non autorisé");
+		return productDao.save(product);
+	}
 }
