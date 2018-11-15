@@ -16,17 +16,13 @@ public class ProductService {
 	ProductDao productDao;
 
 	public List<ProductMargeDto> calculerMargeProduit() {
-		List<ProductMargeDto> res = new ArrayList<>();
+		List<ProductMargeDto> productsMarge = new ArrayList<>();
 		List<Product> allProducts = productDao.findAll();
 		for (Product product : allProducts) {
 			double marge = (double)(product.getPrix() - product.getPrixAchat());
-			res.add(new ProductMargeDto(product.getId(), product.getNom(), marge));
+			productsMarge.add(new ProductMargeDto(product.getId(), product.getNom(), marge));
 		}
-		return res;
+		return productsMarge;
 	}
 	
-//	public Product saveProduct(Product product) {
-//		if(product.getPrix() == 0) throw new ProduitGratuitException("le prix de vente Zero non autorisé");
-//		return productDao.save(product);
-//	}
 }
