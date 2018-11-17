@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "704f846b-e8ed-4cf9-8202-23e63552806b",
+		"name": "Mcommerce-partie1-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9090/AdminProduits",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9090/produits/trierProduitsParOrdreAlphabetique",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"produits",
+						"trierProduitsParOrdreAlphabetique"
+					]
+				},
+				"description": "calculer Marge Produit"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9090/produits/trierProduitsParOrdreAlphabetique",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9090/produits/trierProduitsParOrdreAlphabetique",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"produits",
+						"trierProduitsParOrdreAlphabetique"
+					]
+				},
+				"description": "trier Produits Par Ordre Alphabetique"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9090/Produits",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\": 6,\r\n\"nom\": \"Aspirateur Robot 2\",\r\n\"prix\": 500,\r\n\"prixAchat\": 200\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9090/Produits",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"Produits"
+					]
+				},
+				"description": "sava new produit with valid param"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9090/Produits",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\": 7,\r\n\"nom\": \"Aspirateur Robot 5\",\r\n\"prix\": 0,\r\n\"prixAchat\": 200\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9090/Produits",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"Produits"
+					]
+				},
+				"description": "save produit with bad param"
+			},
+			"response": []
+		}
+	]
+}
